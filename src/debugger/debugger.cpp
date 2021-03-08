@@ -3,6 +3,11 @@
 #include<iostream>
 #include<sstream>
 
+#if defined(_MSVC_TRADITIONAL) && _MSVC_TRADITIONAL
+#include <Windows.h>
+
+#endif
+
 w_vr3::debugger::debugger(w_vr3::w_vr3_debug_level debug_level) : debug_level(debug_level) {
 
 }
@@ -14,6 +19,10 @@ void w_vr3::debugger::debug(const char* msg){
 		stream << "debug:" << msg << "\n";
 		stream << "------------------------\n";
 		printf(stream.str().c_str());
+
+#if defined(_MSVC_TRADITIONAL) && _MSVC_TRADITIONAL
+		OutputDebugStringA(stream.str().c_str());
+#endif
 	}
 	if (debug_level & w_vr3::w_vr3_debug_level::w_vr3_debug_level_file) {
 
@@ -31,6 +40,10 @@ void w_vr3::debugger::debug(const char* msg, uint32_t error_code){
 		stream << "code:" << error_code << "\n";
 		stream << "------------------------\n";
 		printf(stream.str().c_str());
+
+#if defined(_MSVC_TRADITIONAL) && _MSVC_TRADITIONAL
+		OutputDebugStringA(stream.str().c_str());
+#endif
 	}
 	if (debug_level & w_vr3::w_vr3_debug_level::w_vr3_debug_level_file) {
 
@@ -47,6 +60,10 @@ void w_vr3::debugger::error(const char* msg){
 		stream << "error:" << msg << "\n";
 		stream << "------------------------\n";
 		printf(stream.str().c_str());
+
+#if defined(_MSVC_TRADITIONAL) && _MSVC_TRADITIONAL
+		OutputDebugStringA(stream.str().c_str());
+#endif
 	}
 	if (debug_level & w_vr3::w_vr3_debug_level::w_vr3_debug_level_file) {
 
@@ -64,6 +81,10 @@ void w_vr3::debugger::error(const char* msg, uint32_t error_code){
 		stream << "code:" << error_code << "\n";
 		stream << "------------------------\n";
 		printf(stream.str().c_str());
+
+#if defined(_MSVC_TRADITIONAL) && _MSVC_TRADITIONAL
+		OutputDebugStringA(stream.str().c_str());
+#endif
 	}
 	if (debug_level & w_vr3::w_vr3_debug_level::w_vr3_debug_level_file) {
 

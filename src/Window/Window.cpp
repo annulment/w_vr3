@@ -1,4 +1,6 @@
 #include "Window.h"
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include "..//w_vr3_context/w_vr3_context.h"
@@ -67,6 +69,8 @@ void w_vr3::Window::set_window_monitor(w_vr3::w_vr3_window_monitor monitor, cons
 void w_vr3::Window::update_window_size(const int width, const int height){
 	this->width = width;
 	this->height = height;
+
+	glViewport(0, 0, width, height);
 }
 
 const int w_vr3::Window::get_window_height(){

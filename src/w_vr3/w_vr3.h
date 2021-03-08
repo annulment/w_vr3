@@ -10,7 +10,7 @@ namespace w_vr3 {
 	enum w_vr3_operation_status : uint8_t {
 		w_vr3_operation_status_error = 0,
 		w_vr3_operation_status_success = 1
-	} ;
+	};
 
 	enum w_vr3_debug_level : uint8_t {
 		w_vr3_debug_level_none = -1,

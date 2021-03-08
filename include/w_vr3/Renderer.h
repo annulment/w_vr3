@@ -1,12 +1,11 @@
-#ifndef _W_VR3_GL_RENDERER_H
-#define _W_VR3_GL_RENDERER_H
+#ifndef _INC_W_VR3_GL_RENDERER_H
+#define _INC_W_VR3_GL_RENDERER_H
 
-#include "..//..//w_vr3/w_vr3.h"
+#include <w_vr3/w_vr3.h>
 #include <vector>
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <glm/glm.hpp>
-
 #include <string>
 
 namespace w_vr3 {
@@ -25,7 +24,7 @@ namespace w_vr3 {
 		void clear_color(const float red, const float green, const float blue, const float alpha);
 		void clear(GLuint mask);
 
-		class VAO{
+		class VAO {
 			GLuint vao;
 			std::vector<GLuint> buffers;
 
@@ -73,7 +72,7 @@ namespace w_vr3 {
 			void use();
 
 			GLuint get_location(const std::string& name);
-			
+
 			static void unbind();
 
 			void set_uniform_int(GLuint location, const int value);
@@ -90,7 +89,7 @@ namespace w_vr3 {
 
 			~shader();
 
-			static w_vr3::gl::shader* load_shader_from_file(const std::string& vertex_file_name, const std::string&fragment_file_name, w_vr3::w_vr3_context* ctx);
+			static w_vr3::gl::shader* load_shader_from_file(const std::string& vertex_file_name, const std::string& fragment_file_name, w_vr3::w_vr3_context* ctx);
 		};
 	}
 }
