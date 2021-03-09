@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(FATAL_ERROR VERSION 3.8)
 
 project("w_vr3")
 
@@ -9,7 +9,7 @@ set(W_VR3_INLCUDE_FILES
 "include/w_vr3/debugger.h"
 "include/w_vr3/Events.h"
 "include/w_vr3/Renderer.h"
-)
+ "include/w_vr3/Texture.h")
 
 set(W_VR3_SOURCE_DIR "src/")
 set(W_VR3_EXTERNAL_DIR "external/")
@@ -22,7 +22,11 @@ ${W_VR3_INLCUDE_FILES}
 "${W_VR3_SOURCE_DIR}Window/Window.h"			   "${W_VR3_SOURCE_DIR}Window/Window.cpp"
 "${W_VR3_SOURCE_DIR}Events/Events.h" 			   "${W_VR3_SOURCE_DIR}Events/Events.cpp"
 "${W_VR3_SOURCE_DIR}OpenGL/Renderer/Renderer.h"    "${W_VR3_SOURCE_DIR}OpenGL/Renderer/Renderer.cpp"
-"${W_VR3_SOURCE_DIR}OpenGL/loaders/shader_loader.cpp")
+"${W_VR3_SOURCE_DIR}OpenGL/loaders/shader_loader.cpp"
+"${W_VR3_SOURCE_DIR}OpenGL/Texture/Texture.h"      "${W_VR3_SOURCE_DIR}OpenGL/Texture/Texture.cpp"
+"${W_VR3_SOURCE_DIR}stb_image/stb_image.h"		   "${W_VR3_SOURCE_DIR}stb_image/stb_image.cpp"
+"${W_VR3_SOURCE_DIR}OpenGL/Camera/Camera.h"		   "${W_VR3_SOURCE_DIR}OpenGL/Camera/Camera.cpp"
+ "include/w_vr3/Camera.h")
 
 target_include_directories(w_vr3 PUBLIC "include/")
 
@@ -39,6 +43,7 @@ add_subdirectory("${W_VR3_EXTERNAL_DIR}glew")
 
 #glm
 set(BUILD_STATIC_LIBS ON)
+set(BUILD_SHARED_LIBS OFF)
 add_subdirectory("${W_VR3_EXTERNAL_DIR}glm")
 
 target_link_libraries(w_vr3 glfw libglew_static glm_static)

@@ -81,6 +81,14 @@ const int w_vr3::Window::get_window_width(){
 	return width;
 }
 
+void w_vr3::Window::set_should_close(int flag){
+	glfwSetWindowShouldClose(window, flag);
+}
+
+void w_vr3::Window::set_cursor_mode(int mode){
+	glfwSetInputMode(window, GLFW_CURSOR, mode);
+}
+
 void w_vr3::Window::make_current_context(){
 	glfwMakeContextCurrent(window);
 }

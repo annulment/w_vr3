@@ -42,8 +42,12 @@ namespace w_vr3 {
 
 		void update_window_size(const int width, const int height);
 
+		void set_should_close(int flag);
+
 		const int get_window_height();
 		const int get_window_width();
+
+		void set_cursor_mode(int mode);
 
 		void make_current_context();
 	};

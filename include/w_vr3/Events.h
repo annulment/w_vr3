@@ -45,7 +45,7 @@ namespace w_vr3 {
 		static bool clicked(int button);
 		static bool jclicked(int button);
 
-		static void ToggleCursor();
+		static void ToggleCursor(w_vr3::Window* wnd);
 		static float GetDeltaTime();
 	};
 }

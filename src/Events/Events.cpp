@@ -130,9 +130,10 @@ bool w_vr3::Events::jclicked(int button){
 	return _keys[index] && _frames[index] == _current;
 }
 
-void w_vr3::Events::ToggleCursor(){
-	//_cursor_locked = !_cursor_locked;
-	//Events::Window->setCursorMode(_cursor_locked ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL);
+void w_vr3::Events::ToggleCursor(w_vr3::Window* wnd){
+	_cursor_locked = !_cursor_locked;
+
+	wnd->set_cursor_mode(_cursor_locked ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL);
 }
 
 float w_vr3::Events::GetDeltaTime(){
