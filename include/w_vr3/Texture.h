@@ -34,7 +34,7 @@ namespace w_vr3 {
 
 			~Texture();
 
-			static w_vr3::gl::Texture* load_from_file(const std::string& file_name);
+			static w_vr3::gl::Texture* load_from_file(const std::string& file_name, w_vr3::gl::w_vr3_texture_type t_type = w_vr3::gl::w_vr3_texture_type::w_vr3_texture_type_rgb);
 		};
 	}
 }

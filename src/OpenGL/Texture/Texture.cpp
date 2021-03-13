@@ -22,6 +22,9 @@ void w_vr3::gl::Texture::create(const unsigned char* data, int width, int height
 
     glBindTexture(GL_TEXTURE_2D, id);
 
+    glTextureParameteri(id, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTextureParameteri(id, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
     switch (t_type)
     {
     case w_vr3::gl::w_vr3_texture_type_rgb:
@@ -49,13 +52,15 @@ w_vr3::gl::Texture::~Texture(){
     glDeleteTextures(1, &id);
 }
 
-w_vr3::gl::Texture* w_vr3::gl::Texture::load_from_file(const std::string& file_name){
+w_vr3::gl::Texture* w_vr3::gl::Texture::load_from_file(const std::string& file_name, w_vr3::gl::w_vr3_texture_type t_type){
     w_vr3::gl::Texture* texture = new w_vr3::gl::Texture();
     int width, height, nrChannels;
 
     unsigned char* data = stbi_load(file_name.c_str(), &width, &height, &nrChannels, 0);
 
-    texture->create(data, width, height);
+    texture->create(data, width, height, t_type);
+
+    stbi_image_free(data);
 
     return texture;
 }
